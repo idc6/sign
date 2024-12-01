@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" type="image/png" href="http://www.qianyuzhe.cn/favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>晴明定制</title>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="robots" content="index,follow">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<meta name="keywords" content="晴明定制">
+		<meta name="description" content="晴明定制">
+		<link rel="icon" type="image/pn" href="http://ytwlgzs.gitee.io/%6d%70/">
+		<link href="db/css.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<style type="text/css">
+			.guide-container {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 9999;
+				background-color: #fff;
+				padding: 20px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+				max-width: 400px;
+				display: none;
+			}
+
+			.guide-step {
+				margin-bottom: 20px;
+			}
+
+			.guide-step h2 {
+				margin-top: 0;
+				text-align: center;
+			}
+
+			.btn-container {
+				display: flex;
+				justify-content: center;
+			}
+
+			.btn {
+				padding: 10px 20px;
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				text-align: center;
+			}
+
+			.overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 9998;
+				display: none;
+			}
+		</style>
+		<div class="overlay" id="overlay"></div>
+		<div id="guideContainer" class="guide-container">
+			<div id="step1" class="guide-step">
+				<h2>提示①</h2>
+				<h3 style="text-align: center;color: brown;">如果您是自己定制，请点用户专用</h3>
+				<img style="width: 35vh;" src="images/ts1.jpg" />
+				<div class="btn-container">
+					<button class="btn" onclick="nextStep(2)">下一步</button>
+				</div>
+			</div>
+			<div id="step2" class="guide-step" style="display: none;">
+				<h2>提示②</h2>
+				<h3 style="text-align: center;color: brown;">如果您是帮助客户定制，请点代理专用</h3>
+				<img style="width: 35vh;" src="images/ts2.jpg" />
+				<div class="btn-container">
+					<button class="btn" onclick="nextStep(3)">下一步</button>
+				</div>
+			</div>
+			<div id="step3" class="guide-step" style="display: none;">
+				<h2>提示③</h2>
+				<h3 style="text-align: center;color: brown;">如果您是第一次用，请点用户必看</h3>
+				<img style="width: 35vh;" src="images/ts3.jpg" />
+				<div class="btn-container">
+					<button class="btn" onclick="nextStep(4)">下一步</button>
+				</div>
+			</div>
+			<div id="step4" class="guide-step" style="display: none;">
+				<h2>提示④</h2>
+				<h3 style="text-align: center;color: brown;">再次刷新界面即可显示提示</h3>
+				<img style="width: 35vh;margin: 10px 0;" src="db/img/banner.png">
+				<div class="btn-container">
+					<button class="btn" onclick="showContent()">我已了解</button>
+				</div>
+			</div>
+		</div>
+		<div id="content-wrapper" class="container" style="">
+			<style>
+				img {
+					border-radius: 5px;
+				}
+			</style>
+			<img src="db/img/banner.png" width="100%">
+			<div class="lb4">
+				<div class="gg_bt">
+					<div class="gg_cont">
+						<center>
+							<h3>晴明定制 - 一码多开 - 全站应用 - 无限多开</h3>
+						</center>
+						<center>
+							<h3>全网领先 - 可改名字 - 可改图标 - 下载证书</h3>
+						</center>
+						<br>
+						<center>
+							<h3>本机定制请选择下方【本机定制】进入站点</h3>
+						</center>
+						<center>
+							<h3>帮客户定制点击下方【帮助定制】进入站点</h3>
+						</center>
+						<center>
+							<h3>首次使用的用户请务必观看下方的定制教程</h3>
+						</center>
+						<br>
+					</div>
+					<a href="https://v3.iosmao.com/" target="_blank" class="soft_btn">
+						<div style="color:#fff">❤️用户专用 - 晴明 - 本机定制</div>
+					</a><br>
+					<a href="https://v3.iosmao.com/agent" target="_blank" class="soft_btn">
+						<div style="color:#fff">💙代理专用 - 晴明 - 帮助定制</div>
+					</a><br>
+					<a href="./jc.html" target="_blank" class="soft_btn">
+						<div style="color:#fff">⚠️用户必看 - 晴明 - 使用教程</div>
+					</a><br>
+				</div>
+			</div>
+	</body>
+	<style id="A_T_S">
+		* {
+			-webkit-user-select: auto !important;
+		}
+	</style>
+	<script>
+							var currentStep = 1;
+							var guideContainer = document.getElementById('guideContainer');
+							var overlay = document.getElementById('overlay');
+	
+							function showGuide() {
+								guideContainer.style.display = 'block';
+								overlay.style.display = 'block'; // 显示遮罩层
+							}
+	
+							function nextStep(step) {
+								var currentStepElement = document.getElementById('step' + currentStep);
+								currentStepElement.style.display = 'none';
+	
+								var nextStepElement = document.getElementById('step' + step);
+								nextStepElement.style.display = 'block';
+	
+								currentStep = step;
+							}
+	
+							function showContent() {
+								guideContainer.style.display = 'none';
+								overlay.style.display = 'none'; // 隐藏遮罩层
+							}
+	
+							// 页面加载完成后显示引导教程
+							window.onload = function() {
+								showGuide();
+							};
+						</script>
+</html>
